@@ -3,7 +3,8 @@ package com.primeira.appSpring.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="usuario",
+@Table(name="hospede",
+        schema = "hotelaria",
         uniqueConstraints = {
             @UniqueConstraint(columnNames = {"usuario"}),
             @UniqueConstraint(columnNames = {"apelido"})
