@@ -3,7 +3,8 @@ package com.primeira.appSpring.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="quarto")
+@Table(name="quarto",
+    schema = "hotelaria")
 public class M_Quarto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

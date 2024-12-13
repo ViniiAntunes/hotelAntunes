@@ -5,23 +5,25 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "locacao")
+@Table(name = "locacao",
+        schema = "hotelaria"
+)
 public class M_Locacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime checkIn;
-    private LocalDateTime checkOut;
+    private LocalDateTime checkin;
+    private LocalDateTime chekout;
     private String senha;
     private Double preco;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "hospede_id", nullable = false)
     private M_Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_quarto", nullable = false)
+    @JoinColumn(name = "quarto_id", nullable = false)
     private M_Quarto quarto;
 
     // Getters e Setters
@@ -34,19 +36,19 @@ public class M_Locacao {
     }
 
     public LocalDateTime getCheckIn() {
-        return checkIn;
+        return checkin;
     }
 
-    public void setCheckIn(LocalDateTime checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckIn(LocalDateTime checkin) {
+        this.checkin = checkin;
     }
 
     public LocalDateTime getCheckOut() {
-        return checkOut;
+        return chekout;
     }
 
     public void setCheckOut(LocalDateTime checkOut) {
-        this.checkOut = checkOut;
+        this.chekout = checkOut;
     }
 
     public String getSenha() {

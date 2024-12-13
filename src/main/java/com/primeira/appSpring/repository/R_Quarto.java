@@ -10,14 +10,14 @@ import java.util.List;
 
 @Repository
 public interface R_Quarto extends JpaRepository<M_Quarto, Long> {
-    @Query(value = "select quarto.* " +
-            "from quarto " +
-            "left outer join locacao " +
-            "on quarto.id = locacao.id_quarto " +
-            "and (cast(:checkin as timestamp) between locacao.check_in and locacao.check_out " +
-            "or cast(:checkout as timestamp) between locacao.check_in and locacao.check_out " +
-            "or locacao.check_in between cast(:checkin as timestamp) and cast(:checkout as timestamp)) " +
-            "where locacao.id is null", nativeQuery = true)
+    @Query(value = "select hotelaria.quarto.* " +
+            "from hotelaria.quarto " +
+            "left outer join hotelaria.locacao " +
+            "on hotelaria.quarto.id = hotelaria.locacao.quarto_id " +
+            "and (cast(:checkin as timestamp) between hotelaria.locacao.checkin and hotelaria.locacao.chekout " +
+            "or cast(:checkout as timestamp) between hotelaria.locacao.checkin and hotelaria.locacao.chekout " +
+            "or hotelaria.locacao.checkin between cast(:checkin as timestamp) and cast(:checkout as timestamp)) " +
+            "where hotelaria.locacao.id is null", nativeQuery = true)
     List<M_Quarto> getQuartosDisponiveisPeriodo(@Param("checkin") String checkIn,
-                                               @Param("checkout") String checkOut);
+                                                @Param("checkout") String checkOut);
 }

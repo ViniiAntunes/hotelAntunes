@@ -68,3 +68,19 @@ function reservar(){
 }
 
 $("#reservarQuarto").click(reservar);
+
+
+function precoTotal(locacao){
+ letPrecoPorNoite=parseFloat(locacao.preco);
+
+ let checkinDate = new Date(locacao.checkin);
+ let checkoutDate = new Date(locacao.chekout);
+
+
+ let diasDeLoc = difEmMiliseg / (1000 * 3600 * 24);
+
+ let precoTotal = precoPorNoite * diasDeLocacao;
+
+     // Atualiza o valor do preço total no HTML
+     $('#preco_total').text("R$ " + precoTotal.toFixed(2));
+}
